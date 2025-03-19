@@ -5,19 +5,26 @@ import { UserRegister } from "../view/pages/Register/User";
 import { AdminLogin } from "../view/pages/Login/Admin";
 import { AdminDashboard } from "../view/pages/Dashboard/Admin";
 import { UserDashboard } from "../view/pages/Dashboard/User";
+import { AuthGuard } from "./AuthGuard";
 
 export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<UserLogin />} />
-          <Route path="/register" element={<UserRegister />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
+        <Route element={<AuthGuard isPrivate={false} />}>
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<UserLogin />} />
+            <Route path="/register" element={<UserRegister />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+          </Route>
         </Route>
 
-        <Route path="/" element={<UserDashboard />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route element={<AuthGuard isPrivate role="user" />}>
+          <Route path="/" element={<UserDashboard />} />{" "}
+        </Route>
+        <Route element={<AuthGuard isPrivate role="admin" />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

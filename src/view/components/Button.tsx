@@ -11,7 +11,7 @@ export function Button({ children, className, ...props }: ButtonProps) {
     <button
       {...props}
       className={cn(
-        "bg-[#007AFF] rounded-[30px] outline-none text-sm text-center px-6 py-4 text-white",
+        "bg-[#007AFF] rounded-[30px] outline-none text-sm text-center px-6 py-4 text-white w-full max-w-[307px]",
         className
       )}
     >

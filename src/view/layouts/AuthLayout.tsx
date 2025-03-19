@@ -5,7 +5,7 @@ export function AuthLayout() {
 
   return (
     <div className="flex w-full h-full">
-      <div className="bg-gradient-to-b from-[#007AFF] to-[#002B7F] h-full w-1/2 flex items-center">
+      <div className="hidden bg-gradient-to-b from-[#007AFF] to-[#002B7F] h-full w-1/2 items-center lg:flex">
         <div className="text-white ml-[157px] -mt-8 flex flex-col gap-6">
           <div>
             <h1 className="font-bold text-[40px]">TopStore</h1>
@@ -27,8 +27,10 @@ export function AuthLayout() {
           </Link>
         </div>
       </div>
-      <div className="w-1/2 flex justify-center items-center">
-        <Outlet />
+      <div className="w-full flex flex-col justify-center items-center lg:w-1/2">
+        <div className="w-full max-w-[370px] px-6 flex flex-col gap-8">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
