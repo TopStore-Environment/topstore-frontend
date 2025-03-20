@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
+import { useAdminLoginController } from "./useAdminLoginController";
 
 export function AdminLogin() {
+  const { handleSubmit, register, errors } = useAdminLoginController();
+
   return (
     <>
       <header>
@@ -13,10 +16,20 @@ export function AdminLogin() {
         <p className="text-lg">Que bom te ver!</p>
       </header>
 
-      <form className="space-y-4">
-        <Input type="text" name="registration" placeholder="Matrícula" />
-        <Input type="password" name="password" placeholder="Senha" />
-        <Button>Entrar</Button>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input
+          type="text"
+          placeholder="Matrícula"
+          error={errors.registration?.message}
+          {...register("registration")}
+        />
+        <Input
+          type="password"
+          placeholder="Senha"
+          error={errors.password?.message}
+          {...register("password")}
+        />
+        <Button type="submit">Entrar</Button>
       </form>
 
       <Link

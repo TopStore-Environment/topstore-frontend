@@ -7,7 +7,7 @@ interface AuthGuardProps {
 
 export function AuthGuard({ isPrivate, role }: AuthGuardProps) {
   const signedIn = false;
-  const userRole = "admin" as "admin" | "user";
+  const userRole = "user" as "admin" | "user";
 
   if (isPrivate && !signedIn) {
     return <Navigate to="/login" replace />;

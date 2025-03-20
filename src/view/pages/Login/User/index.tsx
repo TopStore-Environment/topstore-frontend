@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
+import { useUserLoginController } from "./useUserLoginController";
 
 export function UserLogin() {
+  const { handleSubmit, register, errors } = useUserLoginController();
+
   return (
     <>
       <header>
@@ -13,10 +16,20 @@ export function UserLogin() {
         <p className="text-lg">Que bom te ver!</p>
       </header>
 
-      <form className="space-y-4">
-        <Input type="email" name="email" placeholder="E-mail" />
-        <Input type="password" name="password" placeholder="Senha" />
-        <Button>Entrar</Button>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input
+          type="email"
+          placeholder="E-mail"
+          error={errors.email?.message}
+          {...register("email")}
+        />
+        <Input
+          type="password"
+          placeholder="Senha"
+          error={errors.password?.message}
+          {...register("password")}
+        />
+        <Button type="submit">Entrar</Button>
       </form>
 
       <div className="w-full max-w-[307px] text-sm flex gap-1.5 mt-2 justify-center lg:hidden">

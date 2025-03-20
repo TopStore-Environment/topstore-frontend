@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
+import { useUserRegistersController } from "./useUserRegisterController";
 
 export function UserRegister() {
+  const { handleSubmit, register, errors } = useUserRegistersController();
+
   return (
     <>
       <header>
@@ -13,10 +16,25 @@ export function UserRegister() {
         <p className="text-lg">Crie sua conta para começar.</p>
       </header>
 
-      <form className="space-y-4">
-        <Input type="text" name="name" placeholder="Nome" />
-        <Input type="email" name="email" placeholder="E-mail" />
-        <Input type="password" name="password" placeholder="Senha" />
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input
+          type="text"
+          placeholder="Nome"
+          error={errors.name?.message}
+          {...register("name")}
+        />
+        <Input
+          type="email"
+          placeholder="E-mail"
+          error={errors.email?.message}
+          {...register("email")}
+        />
+        <Input
+          type="password"
+          placeholder="Senha"
+          error={errors.password?.message}
+          {...register("password")}
+        />
         <Button>Criar conta</Button>
       </form>
 

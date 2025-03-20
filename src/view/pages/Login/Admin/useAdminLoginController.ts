@@ -1,0 +1,29 @@
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  registration: z.string().nonempty("Matrícula é obrigatória"),
+  password: z
+    .string()
+    .nonempty("Senha é obrigatória")
+    .min(8, "A senha deve conter pelo menos 8 dígitos"),
+});
+
+type FormData = z.infer<typeof schema>;
+
+export function useAdminLoginController() {
+  const {
+    handleSubmit: hookFormHandleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const handleSubmit = hookFormHandleSubmit((data) => {
+    console.log(data);
+  });
+
+  return { handleSubmit, register, errors };
+}
