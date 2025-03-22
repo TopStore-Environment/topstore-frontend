@@ -4,7 +4,8 @@ import { Input } from "../../../components/Input";
 import { useUserRegistersController } from "./useUserRegisterController";
 
 export function UserRegister() {
-  const { handleSubmit, register, errors } = useUserRegistersController();
+  const { handleSubmit, register, errors, isLoading } =
+    useUserRegistersController();
 
   return (
     <>
@@ -35,12 +36,14 @@ export function UserRegister() {
           error={errors.password?.message}
           {...register("password")}
         />
-        <Button>Criar conta</Button>
+        <Button type="submit" isLoading={isLoading}>
+          Criar conta
+        </Button>
       </form>
 
-      <div className="w-full max-w-[307px] text-sm flex gap-1.5 mt-2 justify-center lg:hidden">
+      <div className="w-full max-w-[307px] text-sm flex gap-1 mt-2 justify-center lg:hidden">
         Já possui uma conta?
-        <Link to={"/login"} className="text-[#007AFF]">
+        <Link to={"/login"} className="text-blue-150">
           Fazer login!
         </Link>
       </div>

@@ -4,7 +4,8 @@ import { Input } from "../../../components/Input";
 import { useAdminLoginController } from "./useAdminLoginController";
 
 export function AdminLogin() {
-  const { handleSubmit, register, errors } = useAdminLoginController();
+  const { handleSubmit, register, errors, isLoading } =
+    useAdminLoginController();
 
   return (
     <>
@@ -29,7 +30,9 @@ export function AdminLogin() {
           error={errors.password?.message}
           {...register("password")}
         />
-        <Button type="submit">Entrar</Button>
+        <Button type="submit" isLoading={isLoading}>
+          Entrar
+        </Button>
       </form>
 
       <Link

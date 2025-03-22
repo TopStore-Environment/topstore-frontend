@@ -17,7 +17,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           name={name}
           id={name}
           className={cn(
-            "outline-none rounded-[30px] border border-gray-400 w-full max-w-[307px] px-6 py-4"
+            "outline-none rounded-[30px] border border-gray-400 w-full max-w-[307px] px-6 py-4 text-sm"
           )}
         />
 

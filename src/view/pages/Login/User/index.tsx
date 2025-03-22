@@ -4,7 +4,8 @@ import { Input } from "../../../components/Input";
 import { useUserLoginController } from "./useUserLoginController";
 
 export function UserLogin() {
-  const { handleSubmit, register, errors } = useUserLoginController();
+  const { handleSubmit, register, errors, isLoading } =
+    useUserLoginController();
 
   return (
     <>
@@ -29,12 +30,14 @@ export function UserLogin() {
           error={errors.password?.message}
           {...register("password")}
         />
-        <Button type="submit">Entrar</Button>
+        <Button type="submit" isLoading={isLoading}>
+          Entrar
+        </Button>
       </form>
 
-      <div className="w-full max-w-[307px] text-sm flex gap-1.5 mt-2 justify-center lg:hidden">
+      <div className="w-full max-w-[307px] text-sm flex gap-1 mt-2 justify-center lg:hidden">
         Não possui uma conta?
-        <Link to={"/register"} className="text-[#007AFF]">
+        <Link to={"/register"} className="text-blue-150">
           Criar agora!
         </Link>
       </div>
