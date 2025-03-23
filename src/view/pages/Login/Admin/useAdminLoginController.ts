@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { SigninAdminParams } from "../../../../app/services/authService/admin/signin";
 import { authAdminService } from "../../../../app/services/authService/admin";
 import toast from "react-hot-toast";
+import { useAuth } from "../../../../app/hooks/useAuth";
 
 const schema = z.object({
   registration: z.string().nonempty("Matrícula é obrigatória"),
@@ -31,10 +32,12 @@ export function useAdminLoginController() {
     },
   });
 
+  const { signin } = useAuth();
+
   const handleSubmit = hookFormHandleSubmit(async (data) => {
     try {
       const { access_token: accessToken } = await mutateAsync(data);
-      console.log(accessToken);
+      signin(accessToken, "admin");
     } catch {
       toast.success("Credenciais inválidas");
     }
