@@ -39,7 +39,7 @@ export function useAdminLoginController() {
       const { access_token: accessToken } = await mutateAsync(data);
       signin(accessToken, "admin");
     } catch {
-      toast.success("Credenciais inválidas");
+      toast.error("Credenciais inválidas");
     }
   });
 

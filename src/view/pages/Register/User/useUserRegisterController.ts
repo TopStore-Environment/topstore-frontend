@@ -6,6 +6,7 @@ import { SignupUserParams } from "../../../../app/services/authService/user/sign
 import { authUserService } from "../../../../app/services/authService/user";
 import toast from "react-hot-toast";
 import { useAuth } from "../../../../app/hooks/useAuth";
+import { AxiosError } from "axios";
 
 const schema = z.object({
   name: z.string().nonempty("Nome é obrigatório"),
@@ -42,8 +43,11 @@ export function useUserRegistersController() {
     try {
       const { access_token: accessToken } = await mutateAsync(data);
       signin(accessToken, "user");
-    } catch {
-      toast.error("Credenciais inválidas");
+    } catch (error) {
+      const axiosError = error as AxiosError<{ detail?: string }>;
+      const message =
+        axiosError.response?.data?.detail || "Erro ao processar a solicitação";
+      toast.error(message);
     }
   });
 
