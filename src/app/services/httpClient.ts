@@ -10,8 +10,6 @@ httpClient.interceptors.request.use((config) => {
   const accessToken = localStorage.getItem(localStorageKeys.ACCESS_TOKEN);
   const userRole = localStorage.getItem(localStorageKeys.USER_ROLE);
 
-  console.log({ accessToken, userRole });
-
   if (accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;
   }
