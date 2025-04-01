@@ -1,13 +1,9 @@
-import { useAuth } from "../../../../app/hooks/useAuth";
-import { Button } from "../../../components/Button";
+import { DashboardHeader } from "../components/DashboardHeader";
 
 export function UserDashboard() {
-  const { signout } = useAuth();
-
   return (
-    <div>
-      <h1>UserDashboard</h1>
-      <Button onClick={signout}>Sair</Button>
+    <div className="h-full w-full p-4 md:px-8 md:pb-8 md:pt-6 flex flex-col">
+      <DashboardHeader />
     </div>
   );
 }
