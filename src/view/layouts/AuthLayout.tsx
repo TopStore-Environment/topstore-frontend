@@ -18,7 +18,7 @@ export function AuthLayout() {
           </div>
 
           <Link
-            className="bg-[#007AFF] rounded-[30px] outline-none text-sm text-center px-8 py-3 hover:bg-[#007AFF]/80 transition-colors"
+            className="bg-blue-150 rounded-[30px] outline-none text-sm text-center px-8 py-3 hover:bg-blue-150/80 transition-colors"
             to={pathname === "/login" ? "/register" : "/login"}
           >
             {pathname === "/login" && <span>Criar minha conta</span>}

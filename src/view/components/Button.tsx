@@ -19,8 +19,8 @@ export function Button({
       {...props}
       disabled={disabled || isLoading}
       className={cn(
-        `bg-blue-150 rounded-[30px] outline-none text-sm flex items-center justify-center px-6 py-4 hover:bg-blue-150/80 transition-colors
-         text-white w-full max-w-[307px] disabled:bg-gray-300 disabled:text-gray-400 disabled:cursor-not-allowed`,
+        `bg-blue-150 rounded-2xl outline-none text-sm flex items-center justify-center px-6 h-12 hover:bg-blue-700 transition-colors
+         text-white disabled:bg-gray-300 disabled:text-gray-400 disabled:cursor-not-allowed`,
         className
       )}
     >

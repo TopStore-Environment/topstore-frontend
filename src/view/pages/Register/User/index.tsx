@@ -17,7 +17,7 @@ export function UserRegister() {
         <p className="text-lg">Crie sua conta para começar.</p>
       </header>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           type="text"
           placeholder="Nome"
