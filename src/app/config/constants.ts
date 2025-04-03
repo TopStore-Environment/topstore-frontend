@@ -12,3 +12,5 @@ export const TOAST_OPTIONS = {
     },
   },
 };
+
+export const IMAGES_PATH = "/assets/products";

@@ -7,7 +7,7 @@ export function NewProductModal() {
 
   return (
     <Modal
-      title="Novo produto"
+      title="Novo Produto"
       open={isNewProductModalOpen}
       onClose={closeNewProductModal}
     >
