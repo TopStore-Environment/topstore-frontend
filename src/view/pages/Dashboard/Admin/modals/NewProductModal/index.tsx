@@ -25,7 +25,7 @@ export function NewProductModal() {
           <Select placeholder="Modelo" options={MODELS_OPTIONS} />
           <Select placeholder="Armazenamento" options={STORAGE_OPTIONS} />
           <Select
-            placeholder="Tempo de Garantia?"
+            placeholder="Tempo de Garantia"
             options={GUARANTEE_TIME_OPTIONS}
           />
           <Select

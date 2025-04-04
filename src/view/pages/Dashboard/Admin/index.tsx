@@ -3,6 +3,8 @@ import { AdminDashboardProvider } from "./components/AdminDashboardContext";
 import { Fab } from "./components/Fab";
 import { NewProductModal } from "./modals/NewProductModal";
 import { AdminProductCard } from "./components/AdminProductCard";
+import { EditProductModal } from "./modals/EditProductModal";
+import { DeleteProductModal } from "./modals/DeleteProductModal";
 
 export function AdminDashboard() {
   return (
@@ -47,6 +49,8 @@ export function AdminDashboard() {
 
         <Fab />
         <NewProductModal />
+        <EditProductModal />
+        <DeleteProductModal />
       </div>
     </AdminDashboardProvider>
   );
