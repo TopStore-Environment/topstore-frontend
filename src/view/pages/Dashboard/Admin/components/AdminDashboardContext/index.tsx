@@ -15,7 +15,7 @@ export function AdminDashboardProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [isNewProductModalOpen, setIsNewProductModalOpen] = useState(false);
+  const [isNewProductModalOpen, setIsNewProductModalOpen] = useState(true);
 
   const openNewProductModal = useCallback(() => {
     setIsNewProductModalOpen(true);

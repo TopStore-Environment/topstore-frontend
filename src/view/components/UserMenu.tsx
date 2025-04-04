@@ -8,8 +8,8 @@ export function UserMenu() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <div className="bg-blue-200 rounded-full w-12 h-12 flex items-center justify-center border-blue-150">
-          <PersonIcon className="w-6 h-6 text-black" />
+        <div className="bg-blue-150 rounded-full w-12 h-12 flex items-center justify-center border-blue-150">
+          <PersonIcon className="w-6 h-6 text-white" />
         </div>
       </DropdownMenu.Trigger>
 
