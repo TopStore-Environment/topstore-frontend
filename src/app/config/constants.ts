@@ -43,6 +43,14 @@ export const STORAGE_OPTIONS = [
   { value: "1000", label: "1 T" },
 ];
 
+export const COLOR_OPTIONS = [
+  { value: "Branco", label: "Branco" },
+  { value: "Preto", label: "Preto" },
+  { value: "Cinza", label: "Cinza" },
+  { value: "Azul", label: "Azul" },
+  { value: "Dourado", label: "Dourado" },
+];
+
 export const USE_MARKS_OPTIONS = [
   { value: "Sim", label: "Sim" },
   { value: "Não", label: "Não" },

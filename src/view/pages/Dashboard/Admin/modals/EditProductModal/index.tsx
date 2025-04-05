@@ -1,4 +1,5 @@
 import {
+  COLOR_OPTIONS,
   EXISTS_BOX_OPTIONS,
   GUARANTEE_TIME_OPTIONS,
   MODELS_OPTIONS,
@@ -24,6 +25,7 @@ export function EditProductModal() {
         <div className="flex flex-col gap-4">
           <Select placeholder="Modelo" options={MODELS_OPTIONS} />
           <Select placeholder="Armazenamento" options={STORAGE_OPTIONS} />
+          <Select placeholder="Cor" options={COLOR_OPTIONS} />
           <Select
             placeholder="Tempo de Garantia"
             options={GUARANTEE_TIME_OPTIONS}
