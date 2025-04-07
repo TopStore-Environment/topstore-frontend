@@ -1,4 +1,4 @@
-import { DashboardHeader } from "../components/DashboardHeader";
+import { DashboardHeader } from "../../../components/DashboardHeader";
 import { AdminDashboardProvider } from "./components/AdminDashboardContext";
 import { Fab } from "./components/Fab";
 import { NewProductModal } from "./modals/NewProductModal";
