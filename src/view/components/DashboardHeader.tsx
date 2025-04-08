@@ -1,4 +1,4 @@
-import { UserMenu } from "../../../components/UserMenu";
+import { UserMenu } from "./UserMenu";
 
 export function DashboardHeader() {
   return (

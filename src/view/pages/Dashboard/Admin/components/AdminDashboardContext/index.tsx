@@ -1,15 +1,18 @@
 import React, { createContext, useCallback, useState } from "react";
+import { Product } from "../../../../../../app/entities/Product";
 
 interface AdminDashboardContextValues {
   isNewProductModalOpen: boolean;
   openNewProductModal(): void;
   closeNewProductModal(): void;
   isEditProductModalOpen: boolean;
-  openEditProductModal(): void;
+  openEditProductModal(product: Product): void;
   closeEditProductModal(): void;
   isDeleteProductModalOpen: boolean;
-  openDeleteProductModal(): void;
+  openDeleteProductModal(product: Product): void;
   closeDeleteProductModal(): void;
+  productBeingEdited: null | Product;
+  productBeingDeleted: null | Product;
 }
 
 export const AdminDashboardContext = createContext(
@@ -26,6 +29,13 @@ export function AdminDashboardProvider({
   const [isDeleteProductModalOpen, setIsDeleteProductModalOpen] =
     useState(false);
 
+  const [productBeingEdited, setProductBeingEdited] = useState<null | Product>(
+    null
+  );
+
+  const [productBeingDeleted, setProductBeingDeleted] =
+    useState<null | Product>(null);
+
   const openNewProductModal = useCallback(() => {
     setIsNewProductModalOpen(true);
   }, []);
@@ -34,15 +44,18 @@ export function AdminDashboardProvider({
     setIsNewProductModalOpen(false);
   }, []);
 
-  const openEditProductModal = useCallback(() => {
+  const openEditProductModal = useCallback((product: Product) => {
+    setProductBeingEdited(product);
     setIsEditProductModalOpen(true);
   }, []);
 
   const closeEditProductModal = useCallback(() => {
+    setProductBeingEdited(null);
     setIsEditProductModalOpen(false);
   }, []);
 
-  const openDeleteProductModal = useCallback(() => {
+  const openDeleteProductModal = useCallback((product: Product) => {
+    setProductBeingDeleted(product);
     setIsDeleteProductModalOpen(true);
   }, []);
 
@@ -62,6 +75,8 @@ export function AdminDashboardProvider({
         isDeleteProductModalOpen,
         openDeleteProductModal,
         closeDeleteProductModal,
+        productBeingEdited,
+        productBeingDeleted,
       }}
     >
       {children}

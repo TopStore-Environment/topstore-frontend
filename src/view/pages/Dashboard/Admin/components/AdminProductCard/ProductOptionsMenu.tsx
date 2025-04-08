@@ -1,8 +1,13 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { DropdownMenu } from "../../../../../components/DropdownMenu";
 import { useAdminDashboard } from "../AdminDashboardContext/useAdminDashboard";
+import { Product } from "../../../../../../app/entities/Product";
 
-export function ProductOptionsMenu() {
+interface ProductOptionsMenuProps {
+  data: Product;
+}
+
+export function ProductOptionsMenu({ data }: ProductOptionsMenuProps) {
   const { openEditProductModal, openDeleteProductModal } = useAdminDashboard();
 
   return (
@@ -18,13 +23,13 @@ export function ProductOptionsMenu() {
         className="w-[100px] bg-gray-50 space-y-1"
       >
         <DropdownMenu.Item
-          onSelect={openEditProductModal}
+          onSelect={() => openEditProductModal(data)}
           className="data-[highlighted]:bg-gray-200"
         >
           Editar
         </DropdownMenu.Item>
         <DropdownMenu.Item
-          onSelect={openDeleteProductModal}
+          onSelect={() => openDeleteProductModal(data)}
           className="data-[highlighted]:bg-gray-200"
         >
           Excluir

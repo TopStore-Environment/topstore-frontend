@@ -13,8 +13,6 @@ export const TOAST_OPTIONS = {
   },
 };
 
-export const IMAGES_PATH = "/assets/products";
-
 export const MODELS_OPTIONS = [
   { value: "Iphone 16 Pro Max", label: "Iphone 16 Pro Max" },
   { value: "Iphone 16 Pro", label: "Iphone 16 Pro" },
@@ -51,11 +49,6 @@ export const COLOR_OPTIONS = [
   { value: "Dourado", label: "Dourado" },
 ];
 
-export const USE_MARKS_OPTIONS = [
-  { value: "Sim", label: "Sim" },
-  { value: "Não", label: "Não" },
-];
-
 export const GUARANTEE_TIME_OPTIONS = [
   { value: "0", label: "Sem garantia" },
   { value: "1", label: "1 Mês" },
@@ -70,6 +63,11 @@ export const GUARANTEE_TIME_OPTIONS = [
   { value: "10", label: "10 Meses" },
   { value: "11", label: "11 Meses" },
   { value: "12", label: "12 Meses" },
+];
+
+export const USE_MARKS_OPTIONS = [
+  { value: "Sim", label: "Sim" },
+  { value: "Não", label: "Não" },
 ];
 
 export const EXISTS_BOX_OPTIONS = [

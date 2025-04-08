@@ -4,8 +4,12 @@ import { useDeleteProductModalController } from "./useDeleteProductModalControll
 import { Button } from "../../../../../components/Button";
 
 export function DeleteProductModal() {
-  const { isDeleteProductModalOpen, closeDeleteProductModal } =
-    useDeleteProductModalController();
+  const {
+    isDeleteProductModalOpen,
+    closeDeleteProductModal,
+    handleDeleteProduct,
+    isLoading,
+  } = useDeleteProductModalController();
 
   return (
     <Modal
@@ -24,7 +28,12 @@ export function DeleteProductModal() {
       </div>
 
       <div className="mt-10 space-y-4">
-        <Button className="w-full" variant="danger">
+        <Button
+          className="w-full"
+          variant="danger"
+          onClick={handleDeleteProduct}
+          isLoading={isLoading}
+        >
           Sim, desejo remover
         </Button>
         <Button
