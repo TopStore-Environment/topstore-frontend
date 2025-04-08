@@ -19,7 +19,7 @@ export function useDeleteProductModalController() {
 
       closeDeleteProductModal();
       queryClient.invalidateQueries({ queryKey: ["products"] });
-      toast.success("Produto removido do estoque com sucesso");
+      toast.success("Produto removido com sucesso");
     } catch {
       toast.error("Erro ao remover produto do estoque");
     }

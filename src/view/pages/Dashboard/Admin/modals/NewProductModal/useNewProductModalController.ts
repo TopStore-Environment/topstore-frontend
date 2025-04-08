@@ -68,12 +68,11 @@ export function useNewProductModalController() {
 
   const handleSubmit = hookFormHandleSubmit(async (data) => {
     try {
-      console.log(data);
       await mutateAsync(data);
 
       queryClient.invalidateQueries({ queryKey: ["products"] });
 
-      toast.success("Produto adicionado ao estoque com sucesso");
+      toast.success("Produto adicionado com sucesso");
       closeNewProductModal();
       reset();
     } catch {

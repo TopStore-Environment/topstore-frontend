@@ -12,7 +12,7 @@ interface UpdateProductParams {
 }
 
 export async function update({ id, ...params }: UpdateProductParams) {
-  const { data } = await httpClient.put(`/products/${id}`, params);
+  const { data } = await httpClient.patch(`/products/${id}`, params);
 
   return data;
 }

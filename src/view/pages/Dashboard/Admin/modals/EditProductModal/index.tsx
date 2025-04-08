@@ -18,6 +18,7 @@ export function EditProductModal() {
     isEditProductModalOpen,
     closeEditProductModal,
     control,
+    handleSubmit,
     errors,
     register,
   } = useEditProductModalController();
@@ -28,7 +29,7 @@ export function EditProductModal() {
       onClose={closeEditProductModal}
       title="Editar Produto"
     >
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4">
           <Controller
             control={control}

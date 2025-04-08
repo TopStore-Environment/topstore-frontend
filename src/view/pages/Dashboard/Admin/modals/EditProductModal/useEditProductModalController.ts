@@ -8,7 +8,7 @@ import {
 } from "../../../../../../app/config/enums";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { productsService } from "../../../../../../app/services/productsService";
 import toast from "react-hot-toast";
 
@@ -58,6 +58,7 @@ export function useEditProductModalController() {
   });
 
   const { isLoading, mutateAsync } = useMutation(productsService.update);
+  const queryClient = useQueryClient();
 
   const handleSubmit = hookFormHandleSubmit(async (data) => {
     try {
@@ -66,8 +67,9 @@ export function useEditProductModalController() {
         id: productBeingEdited!.id,
       });
 
-      toast.success("Produto editado com sucesso!");
       closeEditProductModal();
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      toast.success("Produto editado com sucesso!");
 
       reset();
     } catch {
