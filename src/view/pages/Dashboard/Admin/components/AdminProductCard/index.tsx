@@ -2,6 +2,8 @@ import { StarFilledIcon } from "@radix-ui/react-icons";
 import { formatCurrency } from "../../../../../../app/utils/formatCurrency";
 import { ProductOptionsMenu } from "./ProductOptionsMenu";
 import { Product } from "../../../../../../app/entities/Product";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 interface AdminProductCardProps {
   data: Product;
@@ -17,10 +19,12 @@ export function AdminProductCard({ data }: AdminProductCardProps) {
         <ProductOptionsMenu data={data} />
       </div>
 
-      <img
+      <LazyLoadImage
         className="w-[110px] h-[134px]"
         src={`/products/${image_name}`}
+        effect="blur"
         alt="Imagem do Produto"
+        threshold={100}
       />
 
       <div className="mt-2 flex flex-col gap-1 text-gray-800 w-full">
