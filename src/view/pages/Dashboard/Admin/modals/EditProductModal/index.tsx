@@ -20,6 +20,7 @@ export function EditProductModal() {
     control,
     handleSubmit,
     errors,
+    isLoading,
     register,
   } = useEditProductModalController();
 
@@ -123,7 +124,9 @@ export function EditProductModal() {
             )}
           />
 
-          <Button type="submit">Confirmar alterações</Button>
+          <Button type="submit" className="w-full mt-4" isLoading={isLoading}>
+            Confirmar alterações
+          </Button>
         </div>
       </form>
     </Modal>
