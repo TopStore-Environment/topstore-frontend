@@ -20,7 +20,8 @@ export function Router() {
         </Route>
 
         <Route element={<AuthGuard isPrivate role="user" />}>
-          <Route path="/" element={<UserDashboard />} />{" "}
+          <Route path="/" element={<UserDashboard />} />
+          <Route path="product/:id" element={<h1>Produto Especifico</h1>} />
         </Route>
         <Route element={<AuthGuard isPrivate role="admin" />}>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />

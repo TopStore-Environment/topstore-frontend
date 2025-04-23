@@ -1,6 +1,6 @@
 import { useProducts } from "../../../../app/hooks/useProducts";
 
-export function useAdminDashboardController() {
+export function useUserDashboardController() {
   const { products, isLoading } = useProducts();
 
   return {

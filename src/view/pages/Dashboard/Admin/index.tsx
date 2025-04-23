@@ -24,7 +24,7 @@ export function AdminDashboard() {
           <div className="h-full w-full p-4 md:px-8 md:pb-8 md:pt-6 flex flex-col items-center">
             <DashboardHeader />
 
-            <main className=" w-full max-w-[630px] py-4 flex-1 flex flex-col gap-4 items-center max-h-full">
+            <main className="w-full max-w-[630px] py-4 flex-1 flex flex-col gap-4 items-center max-h-full">
               <header className=" mt-[70px] w-full flex flex-col gap-2 border-b border-gray-400 pb-4">
                 <strong className="text-lg tracking-[-0.5px]">
                   Pesquisar itens em estoque
