@@ -6,6 +6,7 @@ import { AdminLogin } from "../view/pages/Login/Admin";
 import { AdminDashboard } from "../view/pages/Dashboard/Admin";
 import { UserDashboard } from "../view/pages/Dashboard/User";
 import { AuthGuard } from "./AuthGuard";
+import { Product } from "../view/pages/Product";
 
 export function Router() {
   return (
@@ -21,7 +22,7 @@ export function Router() {
 
         <Route element={<AuthGuard isPrivate role="user" />}>
           <Route path="/" element={<UserDashboard />} />
-          <Route path="product/:id" element={<h1>Produto Especifico</h1>} />
+          <Route path="product/:id" element={<Product />} />
         </Route>
         <Route element={<AuthGuard isPrivate role="admin" />}>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
