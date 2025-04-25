@@ -1,12 +1,15 @@
 import { Product } from "../../../../app/entities/Product";
 import { formatCurrency } from "../../../../app/utils/formatCurrency";
 import { Button } from "../../../components/Button";
+import { useProductContext } from "./ProductContext/useProductContext";
 
 interface ProductDetailsProps {
   data: Product;
 }
 
 export function ProductDetails({ data }: ProductDetailsProps) {
+  const { openBuyProductModal } = useProductContext();
+
   return (
     <div className="w-full h-full p-4 sm:p-10 space-y-10 sm:space-y-16">
       <h1 className="text-xl sm:text-3xl font-bold text-gray-800 tracking-[-0.5px]">
@@ -53,7 +56,9 @@ export function ProductDetails({ data }: ProductDetailsProps) {
         <span>{formatCurrency(data.value)}</span>
       </div>
 
-      <Button className="h-14 text-lg w-full">Fazer pedido</Button>
+      <Button className="h-14 text-lg w-full" onClick={openBuyProductModal}>
+        Fazer pedido
+      </Button>
     </div>
   );
 }

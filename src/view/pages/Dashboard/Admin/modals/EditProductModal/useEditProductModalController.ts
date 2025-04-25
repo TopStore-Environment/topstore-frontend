@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { useAdminDashboard } from "../../components/AdminDashboardContext/useAdminDashboard";
+import { useAdminDashboardContext } from "../../components/AdminDashboardContext/useAdminDashboardContext";
 import {
   colorsEnum,
   guaranteeTimesEnum,
@@ -36,7 +36,7 @@ type FormData = z.infer<typeof schema>;
 
 export function useEditProductModalController() {
   const { isEditProductModalOpen, closeEditProductModal, productBeingEdited } =
-    useAdminDashboard();
+    useAdminDashboardContext();
 
   const {
     handleSubmit: hookFormHandleSubmit,

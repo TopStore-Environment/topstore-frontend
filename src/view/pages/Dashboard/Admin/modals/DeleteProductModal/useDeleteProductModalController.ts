@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useAdminDashboard } from "../../components/AdminDashboardContext/useAdminDashboard";
+import { useAdminDashboardContext } from "../../components/AdminDashboardContext/useAdminDashboardContext";
 import { productsService } from "../../../../../../app/services/productsService";
 import toast from "react-hot-toast";
 
@@ -8,7 +8,7 @@ export function useDeleteProductModalController() {
     isDeleteProductModalOpen,
     closeDeleteProductModal,
     productBeingDeleted,
-  } = useAdminDashboard();
+  } = useAdminDashboardContext();
 
   const { isLoading, mutateAsync } = useMutation(productsService.remove);
   const queryClient = useQueryClient();

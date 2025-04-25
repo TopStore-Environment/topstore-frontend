@@ -1,6 +1,6 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { DropdownMenu } from "../../../../../components/DropdownMenu";
-import { useAdminDashboard } from "../AdminDashboardContext/useAdminDashboard";
+import { useAdminDashboardContext } from "../AdminDashboardContext/useAdminDashboardContext";
 import { Product } from "../../../../../../app/entities/Product";
 
 interface ProductOptionsMenuProps {
@@ -8,7 +8,8 @@ interface ProductOptionsMenuProps {
 }
 
 export function ProductOptionsMenu({ data }: ProductOptionsMenuProps) {
-  const { openEditProductModal, openDeleteProductModal } = useAdminDashboard();
+  const { openEditProductModal, openDeleteProductModal } =
+    useAdminDashboardContext();
 
   return (
     <DropdownMenu.Root>

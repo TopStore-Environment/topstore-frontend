@@ -1,9 +1,9 @@
 import { ChevronUpIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import { DropdownMenu } from "../../../../../components/DropdownMenu";
-import { useAdminDashboard } from "../AdminDashboardContext/useAdminDashboard";
+import { useAdminDashboardContext } from "../AdminDashboardContext/useAdminDashboardContext";
 
 export function Fab() {
-  const { openNewProductModal } = useAdminDashboard();
+  const { openNewProductModal } = useAdminDashboardContext();
 
   return (
     <div className="fixed right-4 bottom-4 md:right-8 md:bottom-8">
