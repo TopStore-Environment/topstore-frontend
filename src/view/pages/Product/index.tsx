@@ -51,7 +51,11 @@ export function Product() {
           </div>
         </main>
 
-        <BuyProductModal product_id={product.id} />
+        <BuyProductModal
+          product_id={product.id}
+          product_name={product.model_name}
+          product_value={product.value}
+        />
       </div>
     </ProductProvider>
   );
