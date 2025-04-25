@@ -1,11 +1,16 @@
+import { Product } from "../../../../app/entities/Product";
 import { formatCurrency } from "../../../../app/utils/formatCurrency";
 import { Button } from "../../../components/Button";
 
-export function ProductDetails() {
+interface ProductDetailsProps {
+  data: Product;
+}
+
+export function ProductDetails({ data }: ProductDetailsProps) {
   return (
     <div className="w-full h-full p-4 sm:p-10 space-y-10 sm:space-y-16">
       <h1 className="text-xl sm:text-3xl font-bold text-gray-800 tracking-[-0.5px]">
-        Apple Iphone 16 Pro Max
+        Apple {data.model_name}
       </h1>
 
       <div>
@@ -14,34 +19,38 @@ export function ProductDetails() {
         <div className="mt-5 space-y-2 text-gray-800 tracking-[-0.5px]">
           <div className="flex justify-between">
             <strong>Armazenamento: </strong>
-            <span>128 GB</span>
+            <span>{data.storage} GB</span>
           </div>
           <div className="flex justify-between">
             <strong>Cor: </strong>
-            <span>Dourado</span>
+            <span>{data.color}</span>
           </div>
           <div className="flex justify-between">
             <strong>Estado da bateria: </strong>
-            <span>98%</span>
+            <span>{data.battery_percentage}%</span>
           </div>
           <div className="flex justify-between">
             <strong>Garantia: </strong>
-            <span>9 Meses</span>
+            <span>
+              {data.guarantee_time === "0"
+                ? "Sem garantia"
+                : data.guarantee_time + " Meses"}
+            </span>
           </div>
           <div className="flex justify-between">
             <strong>Marcas de uso: </strong>
-            <span>Não</span>
+            <span>{data.use_marks}</span>
           </div>
           <div className="flex justify-between">
             <strong>Presença de caixa: </strong>
-            <span>Sim</span>
+            <span>{data.box_exists}</span>
           </div>
         </div>
       </div>
 
       <div className="mt-10 text-xl sm:text-3xl flex gap-1 sm:gap-4 text-gray-800 tracking-[-0.5px]">
         <strong>Por apenas:</strong>
-        <span>{formatCurrency(8970)}</span>
+        <span>{formatCurrency(data.value)}</span>
       </div>
 
       <Button className="h-14 text-lg w-full">Fazer pedido</Button>
