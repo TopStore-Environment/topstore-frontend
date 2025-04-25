@@ -1,6 +1,5 @@
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/Button";
 import { ProductDetails } from "./components/ProductDetails";
 import { ProductImage } from "./components/ProductImage";
 
@@ -17,14 +16,13 @@ export function Product() {
         </Link>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row gap-6 max-h-full">
-        <div>
+      <main className="flex-1 flex flex-col lg:flex-row gap-6 max-h-full mt-10">
+        <div className="w-full lg:w-1/2 flex justify-center items-center">
           <ProductImage image_name={"iphone-16-pro-max.webp"} />
         </div>
 
-        <div>
+        <div className="w-full lg:w-1/2">
           <ProductDetails />
-          <Button>Fazer pedido</Button>
         </div>
       </main>
     </div>

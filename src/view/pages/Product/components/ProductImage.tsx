@@ -7,12 +7,14 @@ interface ProductImageProps {
 
 export function ProductImage({ image_name }: ProductImageProps) {
   return (
-    <LazyLoadImage
-      className=""
-      src={`/products/${image_name}`}
-      effect="blur"
-      alt="Imagem do Produto"
-      threshold={100}
-    />
+    <div className="bg-white rounded-3xl w-full h-full max-w-[780px] max-h-[720px] flex items-center justify-center">
+      <LazyLoadImage
+        className="w-full h-full p-2"
+        src={`/products/${image_name}`}
+        effect="blur"
+        alt="Imagem do Produto"
+        threshold={100}
+      />
+    </div>
   );
 }
