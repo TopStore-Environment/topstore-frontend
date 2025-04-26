@@ -1,7 +1,7 @@
 import { httpClient } from "../httpClient";
 
 interface GetByUserParams {
-  user_id: string;
+  userId: string;
 }
 
 type GetByUserResponse = Array<{
@@ -16,9 +16,9 @@ type GetByUserResponse = Array<{
   };
 }>;
 
-export async function GetByUser(user_id: GetByUserParams) {
+export async function GetByUser({ userId }: GetByUserParams) {
   const data = await httpClient.get<GetByUserResponse>("orders", {
-    params: user_id,
+    params: { userId },
   });
 
   return data;
