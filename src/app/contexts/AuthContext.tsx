@@ -10,6 +10,7 @@ type UserRole = "admin" | "user" | null;
 interface AuthContextValue {
   signedIn: boolean;
   userRole: UserRole;
+  userId: string | null;
   signin(accessToken: string, role: UserRole): void;
   signout(): void;
 }
@@ -33,7 +34,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       : null;
   });
 
-  const { isError, isSuccess, isFetching, remove } = useQuery({
+  const [userId, setUserId] = useState<string | null>(null);
+
+  const {
+    data: userData,
+    isError,
+    isSuccess,
+    isFetching,
+    remove,
+  } = useQuery({
     queryKey: ["users", "me"],
     queryFn: () => usersService.me(),
     enabled: signedIn,
@@ -58,6 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     setSignedIn(false);
     setUserRole(null);
+    setUserId(null);
   }, [remove]);
 
   useEffect(() => {
@@ -67,9 +77,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [isError, signout]);
 
+  useEffect(() => {
+    if (isSuccess && userData) {
+      setUserId(userData.id);
+    }
+  }, [isSuccess, userData]);
+
   return (
     <AuthContext.Provider
-      value={{ signedIn: isSuccess && signedIn, userRole, signin, signout }}
+      value={{
+        signedIn: isSuccess && signedIn,
+        userRole,
+        userId,
+        signin,
+        signout,
+      }}
     >
       <LaunchScreen isLoading={isFetching} />
       {!isFetching && children}

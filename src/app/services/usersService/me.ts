@@ -1,7 +1,7 @@
 import { httpClient } from "../httpClient";
 
 interface MeResponse {
-  name: string;
+  id: string;
 }
 
 export async function me() {
