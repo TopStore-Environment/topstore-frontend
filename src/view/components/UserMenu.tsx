@@ -1,9 +1,12 @@
-import { ExitIcon, PersonIcon } from "@radix-ui/react-icons";
+import { ExitIcon, FileTextIcon, PersonIcon } from "@radix-ui/react-icons";
 import { DropdownMenu } from "./DropdownMenu";
 import { useAuth } from "../../app/hooks/useAuth";
+import { cn } from "../../app/utils/cn";
+import { useUserDashboardContext } from "../pages/Dashboard/User/components/UserDashboardContext/useUserDashboardContext";
 
 export function UserMenu() {
-  const { signout } = useAuth();
+  const { signout, userRole } = useAuth();
+  const { openViewOrdersModal } = useUserDashboardContext();
 
   return (
     <DropdownMenu.Root>
@@ -13,7 +16,20 @@ export function UserMenu() {
         </div>
       </DropdownMenu.Trigger>
 
-      <DropdownMenu.Content className="w-32" align="end">
+      <DropdownMenu.Content
+        className={cn(userRole === "admin" ? "w-32" : "w-auto")}
+        align="end"
+      >
+        {userRole === "user" && (
+          <DropdownMenu.Item
+            onSelect={openViewOrdersModal}
+            className="flex justify-between items-center gap-4"
+          >
+            Meus pedidos
+            <FileTextIcon className="w-4 h-4" />
+          </DropdownMenu.Item>
+        )}
+
         <DropdownMenu.Item
           onSelect={signout}
           className="flex justify-between items-center"
