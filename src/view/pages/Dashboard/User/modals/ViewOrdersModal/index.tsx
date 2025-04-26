@@ -2,9 +2,10 @@ import { Modal } from "../../../../../components/Modal";
 import { useViewOrdersModalController } from "./useViewOrdersModalController";
 import { OrderCard } from "./OrderCard";
 import { ScrollableList } from "../../../../../components/ScrollableList";
+import { Spinner } from "../../../../../components/Spinner";
 
 export function ViewOrdersModal() {
-  const { isViewOrdersModalOpen, closeViewOrdersModal } =
+  const { isViewOrdersModalOpen, closeViewOrdersModal, isLoading } =
     useViewOrdersModalController();
 
   return (
@@ -13,12 +14,20 @@ export function ViewOrdersModal() {
       open={isViewOrdersModalOpen}
       onClose={closeViewOrdersModal}
     >
-      <ScrollableList>
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-      </ScrollableList>
+      {isLoading && (
+        <div className="flex justify-center items-center">
+          <Spinner className="w-7 h-7" />
+        </div>
+      )}
+
+      {!isLoading && (
+        <ScrollableList>
+          <OrderCard />
+          <OrderCard />
+          <OrderCard />
+          <OrderCard />
+        </ScrollableList>
+      )}
     </Modal>
   );
 }
