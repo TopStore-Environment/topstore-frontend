@@ -17,7 +17,7 @@ type GetByUserResponse = Array<{
 }>;
 
 export async function GetByUser({ userId }: GetByUserParams) {
-  const data = await httpClient.get<GetByUserResponse>("orders", {
+  const { data } = await httpClient.get<GetByUserResponse>("orders", {
     params: { userId },
   });
 
