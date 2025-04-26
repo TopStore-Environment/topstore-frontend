@@ -1,5 +1,7 @@
 import { Modal } from "../../../../../components/Modal";
 import { useViewOrdersModalController } from "./useViewOrdersModalController";
+import { OrderCard } from "./OrderCard";
+import { ScrollableList } from "../../../../../components/ScrollableList";
 
 export function ViewOrdersModal() {
   const { isViewOrdersModalOpen, closeViewOrdersModal } =
@@ -11,7 +13,12 @@ export function ViewOrdersModal() {
       open={isViewOrdersModalOpen}
       onClose={closeViewOrdersModal}
     >
-      <h1>ViewOrdersModal</h1>
+      <ScrollableList>
+        <OrderCard />
+        <OrderCard />
+        <OrderCard />
+        <OrderCard />
+      </ScrollableList>
     </Modal>
   );
 }
