@@ -1,13 +1,23 @@
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import React from "react";
+import { cn } from "../../app/utils/cn";
 
 interface ScrollableListProps {
   children: React.ReactNode;
+  ordersQuantity: number;
 }
 
-export function ScrollableList({ children }: ScrollableListProps) {
+export function ScrollableList({
+  children,
+  ordersQuantity,
+}: ScrollableListProps) {
   return (
-    <ScrollAreaPrimitive.Root className="relative w-full h-[330px] overflow-hidden">
+    <ScrollAreaPrimitive.Root
+      className={cn(
+        "relative w-full h-[330px] overflow-hidden",
+        ordersQuantity <= 3 && "h-full"
+      )}
+    >
       <ScrollAreaPrimitive.Viewport className="w-full h-full rounded-md">
         {children}
       </ScrollAreaPrimitive.Viewport>
