@@ -11,7 +11,7 @@ export function useViewOrdersModalController() {
 
   const { isFetching, data } = useQuery({
     queryKey: ["orders", userId],
-    queryFn: () => ordersService.GetByUser({ userId: userId! }),
+    queryFn: () => ordersService.getByUser({ userId: userId! }),
     enabled: !!userId && isViewOrdersModalOpen,
   });
 

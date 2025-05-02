@@ -4,11 +4,11 @@ import { Product } from "../../../../../app/entities/Product";
 import { formatCurrency } from "../../../../../app/utils/formatCurrency";
 import { Link } from "react-router-dom";
 
-interface AdminProductCardProps {
+interface ProductCardUserProps {
   data: Product;
 }
 
-export function UserProductCard({ data }: AdminProductCardProps) {
+export function ProductCardUser({ data }: ProductCardUserProps) {
   const { model_name, value, id } = data;
   const { image_name } = data.product_model;
 

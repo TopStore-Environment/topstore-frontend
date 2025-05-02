@@ -14,7 +14,7 @@ export function ScrollableList({
   return (
     <ScrollAreaPrimitive.Root
       className={cn(
-        "relative w-full h-[330px] overflow-hidden",
+        "relative w-full h-[360px] overflow-hidden",
         ordersQuantity <= 3 && "h-full"
       )}
     >

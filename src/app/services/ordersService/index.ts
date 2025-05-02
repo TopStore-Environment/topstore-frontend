@@ -1,7 +1,9 @@
 import { create } from "./create";
-import { GetByUser } from "./getByUser";
+import { getAll } from "./getAll";
+import { getByUser } from "./getByUser";
 
 export const ordersService = {
   create,
-  GetByUser,
+  getByUser,
+  getAll,
 };

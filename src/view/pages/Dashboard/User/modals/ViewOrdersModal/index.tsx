@@ -1,6 +1,6 @@
 import { Modal } from "../../../../../components/Modal";
 import { useViewOrdersModalController } from "./useViewOrdersModalController";
-import { OrderCard } from "./OrderCard";
+import { OrderCardUser } from "./OrderCardUser";
 import { ScrollableList } from "../../../../../components/ScrollableList";
 import { Spinner } from "../../../../../components/Spinner";
 import EmptyStateImage from "../../../../../../assets/empty-state.svg";
@@ -34,7 +34,7 @@ export function ViewOrdersModal() {
       {!isLoading && hasOrders && (
         <ScrollableList ordersQuantity={ordersQuantity}>
           {orders.map((order) => (
-            <OrderCard key={order.id} order={order} />
+            <OrderCardUser key={order.id} order={order} />
           ))}
         </ScrollableList>
       )}

@@ -1,6 +1,11 @@
 export interface Order {
   id: string;
   created_at: string;
+  address: string;
+  user: {
+    name: string;
+    email: string;
+  };
   product: {
     model_name: string;
     value: number;

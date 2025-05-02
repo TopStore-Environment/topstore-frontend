@@ -5,11 +5,11 @@ import { Product } from "../../../../../../app/entities/Product";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-interface AdminProductCardProps {
+interface ProductCardAdminProps {
   data: Product;
 }
 
-export function AdminProductCard({ data }: AdminProductCardProps) {
+export function ProductCardAdmin({ data }: ProductCardAdminProps) {
   const { model_name, value } = data;
   const { image_name } = data.product_model;
 

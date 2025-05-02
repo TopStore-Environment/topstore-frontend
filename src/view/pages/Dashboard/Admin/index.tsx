@@ -5,7 +5,7 @@ import {
 } from "./components/AdminDashboardContext";
 import { Fab } from "./components/Fab";
 import { NewProductModal } from "./modals/NewProductModal";
-import { AdminProductCard } from "./components/AdminProductCard";
+import { ProductCardAdmin } from "./components/ProductCardAdmin";
 import { EditProductModal } from "./modals/EditProductModal";
 import { DeleteProductModal } from "./modals/DeleteProductModal";
 import { useAdminDashboardController } from "./useAdminDashboardController";
@@ -56,7 +56,7 @@ export function AdminDashboard() {
                 <div className="w-full flex justify-center">
                   <div className="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5">
                     {products.map((product) => (
-                      <AdminProductCard key={product.id} data={product} />
+                      <ProductCardAdmin key={product.id} data={product} />
                     ))}
                   </div>
                 </div>

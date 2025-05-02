@@ -7,7 +7,7 @@ interface GetByUserParams {
 
 type GetByUserResponse = Array<Order>;
 
-export async function GetByUser({ userId }: GetByUserParams) {
+export async function getByUser({ userId }: GetByUserParams) {
   const { data } = await httpClient.get<GetByUserResponse>("orders", {
     params: { user_id: userId },
   });

@@ -1,6 +1,6 @@
 import { DashboardHeader } from "../../../components/DashboardHeader";
 import { Spinner } from "../../../components/Spinner";
-import { UserProductCard } from "./components/UserProductCard";
+import { ProductCardUser } from "./components/ProductCardUser";
 import { useUserDashboardController } from "./useUserDashboardController";
 import EmptyStateImage from "../../../../assets/empty-state.svg";
 import { UserDashboardProvider } from "./components/UserDashboardContext";
@@ -47,7 +47,7 @@ export function UserDashboard() {
             <div className="w-full flex justify-center">
               <div className="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5">
                 {products.map((product) => (
-                  <UserProductCard key={product.id} data={product} />
+                  <ProductCardUser key={product.id} data={product} />
                 ))}
               </div>
             </div>

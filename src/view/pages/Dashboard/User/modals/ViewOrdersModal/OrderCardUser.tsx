@@ -3,11 +3,11 @@ import { formatCurrency } from "../../../../../../app/utils/formatCurrency";
 import { Order } from "../../../../../../app/entities/Order";
 import { formatDate } from "../../../../../../app/utils/formatDate";
 
-interface OrderCardProps {
+interface OrderCardUserProps {
   order: Order;
 }
 
-export function OrderCard({ order }: OrderCardProps) {
+export function OrderCardUser({ order }: OrderCardUserProps) {
   return (
     <div className="flex justify-around items-center w-[96%] py-4 border-b-[2px] border-gray-300 ">
       <LazyLoadImage
