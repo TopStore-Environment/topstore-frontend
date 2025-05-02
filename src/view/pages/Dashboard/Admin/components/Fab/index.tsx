@@ -1,9 +1,14 @@
-import { ChevronUpIcon, PlusCircledIcon } from "@radix-ui/react-icons";
+import {
+  ChevronUpIcon,
+  FileTextIcon,
+  PlusCircledIcon,
+} from "@radix-ui/react-icons";
 import { DropdownMenu } from "../../../../../components/DropdownMenu";
 import { useAdminDashboardContext } from "../AdminDashboardContext/useAdminDashboardContext";
 
 export function Fab() {
-  const { openNewProductModal } = useAdminDashboardContext();
+  const { openNewProductModal, openViewOrdersModal } =
+    useAdminDashboardContext();
 
   return (
     <div className="fixed right-4 bottom-4 md:right-8 md:bottom-8">
@@ -15,6 +20,10 @@ export function Fab() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content align="end">
+          <DropdownMenu.Item className="gap-2" onSelect={openViewOrdersModal}>
+            <FileTextIcon className="w-5 h-5" />
+            Visulizar Pedidos
+          </DropdownMenu.Item>
           <DropdownMenu.Item className="gap-2" onSelect={openNewProductModal}>
             <PlusCircledIcon className="w-5 h-5" />
             Adicionar Produto
