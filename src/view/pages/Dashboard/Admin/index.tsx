@@ -11,6 +11,7 @@ import { DeleteProductModal } from "./modals/DeleteProductModal";
 import { useAdminDashboardController } from "./useAdminDashboardController";
 import EmptyStateImage from "../../../../assets/empty-state.svg";
 import { Spinner } from "../../../components/Spinner";
+import { ViewOrdersUsersModal } from "./modals/ViewOrdersUsersModal";
 
 export function AdminDashboard() {
   const { products, isLoading } = useAdminDashboardController();
@@ -64,6 +65,7 @@ export function AdminDashboard() {
 
             <Fab />
             <NewProductModal />
+            <ViewOrdersUsersModal />
             {productBeingEdited && <EditProductModal />}
             <DeleteProductModal />
           </div>
