@@ -10,13 +10,21 @@ import { EditProductModal } from "./modals/EditProductModal";
 import { DeleteProductModal } from "./modals/DeleteProductModal";
 import { useAdminDashboardController } from "./useAdminDashboardController";
 import EmptyStateImage from "../../../../assets/empty-state.svg";
+import magnifierQuestion from "../../../../assets/magnifier-question.svg";
 import { Spinner } from "../../../components/Spinner";
 import { ViewOrdersUsersModal } from "./modals/ViewOrdersUsersModal";
 
 export function AdminDashboard() {
-  const { products, isLoading } = useAdminDashboardController();
+  const {
+    products,
+    isLoading,
+    filteredProducts,
+    searchTerm,
+    handleChangeSearchTerm,
+  } = useAdminDashboardController();
 
   const hasProducts = products.length > 0;
+  const isSearchEmpty = hasProducts && filteredProducts.length < 1;
 
   return (
     <AdminDashboardProvider>
@@ -31,6 +39,8 @@ export function AdminDashboard() {
                   Pesquisar itens em estoque
                 </strong>
                 <input
+                  value={searchTerm}
+                  onChange={handleChangeSearchTerm}
                   type="text"
                   placeholder="Digite o nome do produto..."
                   className="px-4 py-2 rounded-[13px] w-full max-w-[630px] outline-none"
@@ -55,10 +65,21 @@ export function AdminDashboard() {
               {hasProducts && !isLoading && (
                 <div className="w-full flex justify-center">
                   <div className="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5">
-                    {products.map((product) => (
+                    {filteredProducts.map((product) => (
                       <ProductCardAdmin key={product.id} data={product} />
                     ))}
                   </div>
+                </div>
+              )}
+
+              {isSearchEmpty && (
+                <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-8">
+                  <img src={magnifierQuestion} alt="Magnifier Question" />
+
+                  <span className="text-center">
+                    Nenhum resultado foi encontrado para{" "}
+                    <strong>{searchTerm}</strong>.
+                  </span>
                 </div>
               )}
             </main>
