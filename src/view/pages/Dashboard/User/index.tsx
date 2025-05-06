@@ -32,7 +32,7 @@ export function UserDashboard() {
         <main className="w-full max-w-[630px] py-4 flex-1 flex flex-col gap-4 items-center max-h-full">
           <header className="mt-[70px] w-full flex flex-col gap-2 border-b border-gray-400 pb-4">
             <strong className="text-lg tracking-[-0.5px]">
-              Encontre Produtos no estoque
+              Encontre Produtos no Estoque
             </strong>
             <div className="flex gap-2">
               <input
