@@ -15,7 +15,7 @@ export function Product() {
   if (isLoading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <Spinner className="h-7 w-7" />
+        <Spinner className="h-10 w-10" />
       </div>
     );
   }

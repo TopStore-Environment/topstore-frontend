@@ -2,13 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import { productsService } from "../services/productsService";
 import { useCallback, useMemo, useState } from "react";
 import { Product } from "../entities/Product";
+import { ProductsFilters } from "../services/productsService/getAll";
 
-export function useProducts() {
+export function useProducts(filters: ProductsFilters) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { data: products, isFetching } = useQuery({
+  const {
+    data: products,
+    isFetching,
+    refetch,
+  } = useQuery({
     queryKey: ["products"],
-    queryFn: productsService.getAll,
+    queryFn: () => productsService.getAll(filters),
   });
 
   const handleChangeSearchTerm = useCallback(
@@ -32,5 +37,6 @@ export function useProducts() {
     searchTerm,
     handleChangeSearchTerm,
     filteredProducts,
+    refetch,
   };
 }

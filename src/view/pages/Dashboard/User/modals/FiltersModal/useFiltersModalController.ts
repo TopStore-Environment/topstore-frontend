@@ -1,1 +1,45 @@
-export function useFiltersModalController() {}
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { ProductsFilters } from "../../../../../../app/services/productsService/getAll";
+import { useProducts } from "../../../../../../app/hooks/useProducts";
+
+interface useFiltersModalControllerProps {
+  closeFiltersModal(): void;
+}
+
+export function useFiltersModalController({
+  closeFiltersModal,
+}: useFiltersModalControllerProps) {
+  const [filters, setFilters] = useState<ProductsFilters>({});
+
+  const { handleSubmit, control, reset } = useForm();
+  const { refetch } = useProducts(filters);
+
+  useEffect(() => {
+    refetch();
+  }, [filters, refetch, reset]);
+
+  const onApllyFilters = handleSubmit((data) => {
+    setFilters({
+      model_name: data.model_name === "" ? null : data.model_name,
+      color: data.color === "" ? null : data.color,
+      storage: data.storage === "" ? null : data.storage,
+    });
+    closeFiltersModal();
+  });
+
+  const handleClearFilters = () => {
+    if (Object.keys(filters).length > 0) {
+      console.log("Há filtros armazenados que estão sendo limpos");
+      setFilters({});
+    }
+    reset({ model_name: null, storage: null, color: null });
+    closeFiltersModal();
+  };
+
+  return {
+    onApllyFilters,
+    control,
+    handleClearFilters,
+  };
+}

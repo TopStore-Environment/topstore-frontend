@@ -30,7 +30,7 @@ export function UserDashboard() {
         <DashboardHeader />
 
         <main className="w-full max-w-[630px] py-4 flex-1 flex flex-col gap-4 items-center max-h-full">
-          <header className="mt-[70px] w-full flex flex-col gap-2 border-b border-gray-400 pb-4">
+          <header className="mt-[70px] w-full flex flex-col gap-2 pb-4">
             <strong className="text-lg tracking-[-0.5px]">
               Encontre Produtos no Estoque
             </strong>
@@ -52,8 +52,8 @@ export function UserDashboard() {
           </header>
 
           {isLoading && (
-            <div className="flex items-center justify-center flex-col mt-10">
-              <Spinner className="w-10 h-10" />
+            <div className="flex items-center justify-center flex-col mt-[130px]">
+              <Spinner className="w-7 h-7" />
             </div>
           )}
 

@@ -3,8 +3,16 @@ import { httpClient } from "../httpClient";
 
 type ProductsResponse = Array<Product>;
 
-export async function getAll() {
-  const { data } = await httpClient.get<ProductsResponse>("/products");
+export type ProductsFilters = {
+  model_name?: string | null;
+  color?: string | null;
+  storage?: string | null;
+};
+
+export async function getAll(filters: ProductsFilters) {
+  const { data } = await httpClient.get<ProductsResponse>("/products", {
+    params: filters,
+  });
 
   return data;
 }
