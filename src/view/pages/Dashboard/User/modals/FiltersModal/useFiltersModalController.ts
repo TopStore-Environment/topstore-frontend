@@ -12,12 +12,9 @@ export function useFiltersModalController({
 }: useFiltersModalControllerProps) {
   const [filters, setFilters] = useState<ProductsFilters>({});
 
-  const { handleSubmit, control, reset } = useForm();
   const { refetch } = useProducts(filters);
 
-  useEffect(() => {
-    refetch();
-  }, [filters, refetch, reset]);
+  const { handleSubmit, control, reset } = useForm();
 
   const onApllyFilters = handleSubmit((data) => {
     setFilters({
@@ -36,6 +33,10 @@ export function useFiltersModalController({
     reset({ model_name: null, storage: null, color: null });
     closeFiltersModal();
   };
+
+  useEffect(() => {
+    refetch();
+  }, [filters, refetch]);
 
   return {
     onApllyFilters,
