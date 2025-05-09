@@ -14,6 +14,9 @@ interface AdminDashboardContextValues {
   isViewOrdersModalOpen: boolean;
   openViewOrdersModal(): void;
   closeViewOrdersModal(): void;
+  isSalesReportModalOpen: boolean;
+  openSalesReportModal(): void;
+  closeSalesReportModal(): void;
   productBeingEdited: null | Product;
   productBeingDeleted: null | Product;
 }
@@ -32,6 +35,7 @@ export function AdminDashboardProvider({
   const [isDeleteProductModalOpen, setIsDeleteProductModalOpen] =
     useState(false);
   const [isViewOrdersModalOpen, setIsViewOrdersModalOpen] = useState(false);
+  const [isSalesReportModalOpen, setIsSalesReportModalOpen] = useState(false);
 
   const [productBeingEdited, setProductBeingEdited] = useState<null | Product>(
     null
@@ -75,6 +79,14 @@ export function AdminDashboardProvider({
     setIsViewOrdersModalOpen(false);
   }, []);
 
+  const openSalesReportModal = useCallback(() => {
+    setIsSalesReportModalOpen(true);
+  }, []);
+
+  const closeSalesReportModal = useCallback(() => {
+    setIsSalesReportModalOpen(false);
+  }, []);
+
   return (
     <AdminDashboardContext.Provider
       value={{
@@ -90,6 +102,9 @@ export function AdminDashboardProvider({
         isViewOrdersModalOpen,
         openViewOrdersModal,
         closeViewOrdersModal,
+        isSalesReportModalOpen,
+        openSalesReportModal,
+        closeSalesReportModal,
         productBeingEdited,
         productBeingDeleted,
       }}

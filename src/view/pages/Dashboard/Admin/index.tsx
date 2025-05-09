@@ -13,6 +13,7 @@ import EmptyStateImage from "../../../../assets/empty-state.svg";
 import magnifierQuestion from "../../../../assets/magnifier-question.svg";
 import { Spinner } from "../../../components/Spinner";
 import { ViewOrdersUsersModal } from "./modals/ViewOrdersUsersModal";
+import { SalesReportModal } from "./modals/SalesReportModal";
 
 export function AdminDashboard() {
   const {
@@ -85,8 +86,9 @@ export function AdminDashboard() {
             </main>
 
             <Fab />
-            <NewProductModal />
             <ViewOrdersUsersModal />
+            <NewProductModal />
+            <SalesReportModal />
             {productBeingEdited && <EditProductModal />}
             <DeleteProductModal />
           </div>

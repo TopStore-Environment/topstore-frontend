@@ -1,4 +1,5 @@
 import {
+  BarChartIcon,
   ChevronUpIcon,
   FileTextIcon,
   PlusCircledIcon,
@@ -7,7 +8,7 @@ import { DropdownMenu } from "../../../../../components/DropdownMenu";
 import { useAdminDashboardContext } from "../AdminDashboardContext/useAdminDashboardContext";
 
 export function Fab() {
-  const { openNewProductModal, openViewOrdersModal } =
+  const { openNewProductModal, openViewOrdersModal, openSalesReportModal } =
     useAdminDashboardContext();
 
   return (
@@ -20,13 +21,17 @@ export function Fab() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content align="end">
+          <DropdownMenu.Item className="gap-2" onSelect={openNewProductModal}>
+            <PlusCircledIcon className="w-5 h-5" />
+            Adicionar Produto
+          </DropdownMenu.Item>
           <DropdownMenu.Item className="gap-2" onSelect={openViewOrdersModal}>
             <FileTextIcon className="w-5 h-5" />
             Visulizar Pedidos
           </DropdownMenu.Item>
-          <DropdownMenu.Item className="gap-2" onSelect={openNewProductModal}>
-            <PlusCircledIcon className="w-5 h-5" />
-            Adicionar Produto
+          <DropdownMenu.Item className="gap-2" onSelect={openSalesReportModal}>
+            <BarChartIcon className="w-5 h-5" />
+            Relatório de Vendas
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
