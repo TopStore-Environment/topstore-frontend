@@ -13,6 +13,21 @@ export const TOAST_OPTIONS = {
   },
 };
 
+export const MONTHS = [
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
+];
+
 export const MODELS_OPTIONS = [
   { value: "Iphone 16 Pro Max", label: "Iphone 16 Pro Max" },
   { value: "Iphone 16 Pro", label: "Iphone 16 Pro" },
