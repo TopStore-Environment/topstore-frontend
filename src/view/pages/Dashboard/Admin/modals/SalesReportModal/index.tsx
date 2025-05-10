@@ -6,6 +6,7 @@ import { useSalesReportModalController } from "./useSalesReportModalController";
 import { SliderOption } from "./SliderOption";
 import { SliderNavigation } from "./SliderNavigation";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { formatCurrency } from "../../../../../../app/utils/formatCurrency";
 
 export function SalesReportModal() {
   const {
@@ -31,13 +32,13 @@ export function SalesReportModal() {
 
           <button
             onClick={() => handleChangeYear(-1)}
-            className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-start absolute lelf-0 top-1/2 -translate-y-1/2"
+            className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-start absolute lelf-0 top-1/2 -translate-y-1/2 outline-none"
           >
             <ChevronLeftIcon className="w-5 h-5" />
           </button>
           <button
             onClick={() => handleChangeYear(1)}
-            className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-end absolute right-0 top-1/2 -translate-y-1/2"
+            className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-end absolute right-0 top-1/2 -translate-y-1/2 outline-none"
           >
             <ChevronRightIcon className="w-5 h-5" />
           </button>
@@ -55,6 +56,40 @@ export function SalesReportModal() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center justify-center gap-5">
+        <div className="flex flex-col items-center gap-3 w-full">
+          <strong className="text-gray-800 tracking-[-0.5px]">
+            Número de pedidos:
+          </strong>
+          <span className="text-xl text-gray-800 tracking-[-0.5px]">3</span>
+        </div>
+        <div className="flex flex-col items-center gap-3 w-full">
+          <strong className="text-gray-800 tracking-[-0.5px]">
+            Faturamento:
+          </strong>
+          <span className="text-xl text-gray-800 tracking-[-0.5px]">
+            {formatCurrency(9489)}
+          </span>
+        </div>
+        <div className="flex flex-col items-center gap-3 w-full">
+          <strong className="text-gray-800 tracking-[-0.5px]">
+            Modelo(s) mais vendido(s):
+          </strong>
+          <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
+            Iphone 16 Pro Max
+          </span>
+        </div>
+
+        <div className="flex flex-col items-center gap-3 w-full">
+          <strong className="text-gray-800 tracking-[-0.5px]">
+            Cor(es) mais vendida(s):
+          </strong>
+          <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
+            Preto
+          </span>
+        </div>
       </div>
     </Modal>
   );

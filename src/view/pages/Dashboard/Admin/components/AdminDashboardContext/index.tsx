@@ -35,7 +35,7 @@ export function AdminDashboardProvider({
   const [isDeleteProductModalOpen, setIsDeleteProductModalOpen] =
     useState(false);
   const [isViewOrdersModalOpen, setIsViewOrdersModalOpen] = useState(false);
-  const [isSalesReportModalOpen, setIsSalesReportModalOpen] = useState(true);
+  const [isSalesReportModalOpen, setIsSalesReportModalOpen] = useState(false);
 
   const [productBeingEdited, setProductBeingEdited] = useState<null | Product>(
     null
