@@ -7,6 +7,8 @@ import { SliderOption } from "./SliderOption";
 import { SliderNavigation } from "./SliderNavigation";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { formatCurrency } from "../../../../../../app/utils/formatCurrency";
+import { Spinner } from "../../../../../components/Spinner";
+import EmptyStateImage from "../../../../../../assets/empty-state.svg";
 
 export function SalesReportModal() {
   const {
@@ -14,7 +16,13 @@ export function SalesReportModal() {
     closeSalesReportModal,
     handleChangeYear,
     selectedYear,
+    handleChangeMonth,
+    filters,
+    isLoading,
+    salesReport,
   } = useSalesReportModalController();
+
+  const hasSalesReport = !!salesReport;
 
   return (
     <Modal
@@ -46,7 +54,14 @@ export function SalesReportModal() {
       </div>
 
       <div className="mt-6 relative">
-        <Swiper slidesPerView={3} centeredSlides>
+        <Swiper
+          slidesPerView={3}
+          centeredSlides
+          initialSlide={filters.month}
+          onSlideChange={(swiper) => {
+            handleChangeMonth(swiper.realIndex);
+          }}
+        >
           <SliderNavigation />
           {MONTHS.map((month, index) => (
             <SwiperSlide key={month}>
@@ -58,39 +73,58 @@ export function SalesReportModal() {
         </Swiper>
       </div>
 
-      <div className="mt-10 flex flex-col items-center justify-center gap-5">
-        <div className="flex flex-col items-center gap-3 w-full">
-          <strong className="text-gray-800 tracking-[-0.5px]">
-            Número de pedidos:
-          </strong>
-          <span className="text-xl text-gray-800 tracking-[-0.5px]">3</span>
+      {isLoading && (
+        <div className="flex justify-center items-center mt-10">
+          <Spinner className="w-7 h-7" />
         </div>
-        <div className="flex flex-col items-center gap-3 w-full">
-          <strong className="text-gray-800 tracking-[-0.5px]">
-            Faturamento:
-          </strong>
-          <span className="text-xl text-gray-800 tracking-[-0.5px]">
-            {formatCurrency(9489)}
-          </span>
-        </div>
-        <div className="flex flex-col items-center gap-3 w-full">
-          <strong className="text-gray-800 tracking-[-0.5px]">
-            Modelo(s) mais vendido(s):
-          </strong>
-          <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
-            Iphone 16 Pro Max
-          </span>
-        </div>
+      )}
 
-        <div className="flex flex-col items-center gap-3 w-full">
-          <strong className="text-gray-800 tracking-[-0.5px]">
-            Cor(es) mais vendida(s):
-          </strong>
-          <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
-            Preto
-          </span>
+      {!isLoading && !hasSalesReport && (
+        <div className="flex flex-col gap-4 items-center justify-center mt-14">
+          <img src={EmptyStateImage} alt="Empty State" className="w-[120px]" />
+          <h1 className="text-center">
+            Não há estatísticas para o periodo selecionado.
+          </h1>
         </div>
-      </div>
+      )}
+
+      {!isLoading && hasSalesReport && (
+        <div className="mt-10 flex flex-col items-center justify-center gap-5">
+          <div className="flex flex-col items-center gap-3 w-full">
+            <strong className="text-gray-800 tracking-[-0.5px]">
+              Número de pedidos:
+            </strong>
+            <span className="text-xl text-gray-800 tracking-[-0.5px]">
+              {salesReport.orders}
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-3 w-full">
+            <strong className="text-gray-800 tracking-[-0.5px]">
+              Faturamento:
+            </strong>
+            <span className="text-xl text-gray-800 tracking-[-0.5px]">
+              {formatCurrency(salesReport.billing)}
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-3 w-full">
+            <strong className="text-gray-800 tracking-[-0.5px]">
+              Modelo(s) mais vendido(s):
+            </strong>
+            <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
+              {salesReport.best_selling_models.join(", ")}.
+            </span>
+          </div>
+
+          <div className="flex flex-col items-center gap-3 w-full">
+            <strong className="text-gray-800 tracking-[-0.5px]">
+              Cor(es) mais vendida(s):
+            </strong>
+            <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
+              {salesReport.best_selling_colors.join(", ")}.
+            </span>
+          </div>
+        </div>
+      )}
     </Modal>
   );
 }

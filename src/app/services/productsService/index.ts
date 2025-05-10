@@ -1,14 +1,14 @@
 import { create } from "./create";
 import { getAll } from "./getAll";
 import { getById } from "./getById";
-import { getSalesStatistics } from "./getSalesStatistics";
+import { getSalesReport } from "./getSalesReport";
 import { remove } from "./remove";
 import { update } from "./update";
 
 export const productsService = {
   getAll,
   getById,
-  getSalesStatistics,
+  getSalesReport,
   create,
   update,
   remove,

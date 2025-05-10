@@ -1,19 +1,19 @@
 import { httpClient } from "../httpClient";
 
-type SalesStatisticsResponse = {
+type SalesReportResponse = {
   orders: number;
   billing: number;
   best_selling_models: Array<string>;
   best_selling_colors: Array<string>;
 };
 
-export type SalesStatisticsFilters = {
+export type SalesReportFilters = {
   month: number;
   year: number;
 };
 
-export async function getSalesStatistics(filters: SalesStatisticsFilters) {
-  const { data } = await httpClient.get<SalesStatisticsResponse>(
+export async function getSalesReport(filters: SalesReportFilters) {
+  const { data } = await httpClient.get<SalesReportResponse>(
     "/products/sales_statistics",
     {
       params: filters,
