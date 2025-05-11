@@ -17,7 +17,7 @@ export function useSalesReportModalController() {
   const { data, isFetching, refetch } = useQuery({
     queryKey: ["salesReport"],
     queryFn: () => productsService.getSalesReport(filters),
-    enabled: isSalesReportModalOpen,
+    enabled: false,
   });
 
   function handleChangeMonth(month: number) {
@@ -36,8 +36,10 @@ export function useSalesReportModalController() {
   }
 
   useEffect(() => {
-    refetch();
-  }, [filters, refetch]);
+    if (isSalesReportModalOpen) {
+      refetch();
+    }
+  }, [filters, refetch, isSalesReportModalOpen]);
 
   return {
     isSalesReportModalOpen,
@@ -46,7 +48,12 @@ export function useSalesReportModalController() {
     selectedYear,
     handleChangeMonth,
     filters,
-    salesReport: data ?? null,
+    salesReport: data ?? {
+      orders: 0,
+      billing: 0,
+      best_selling_models: [],
+      best_selling_colors: [],
+    },
     isLoading: isFetching,
   };
 }

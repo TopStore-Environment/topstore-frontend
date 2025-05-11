@@ -9,7 +9,7 @@ export type ProductsFilters = {
   storage?: string | null;
 };
 
-export async function getAll(filters: ProductsFilters) {
+export async function getAll(filters?: ProductsFilters) {
   const { data } = await httpClient.get<ProductsResponse>("/products", {
     params: filters,
   });

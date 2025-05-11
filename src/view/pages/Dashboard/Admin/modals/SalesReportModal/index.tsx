@@ -22,7 +22,7 @@ export function SalesReportModal() {
     salesReport,
   } = useSalesReportModalController();
 
-  const hasSalesReport = !!salesReport;
+  const hasSalesReport = salesReport.orders > 0;
 
   return (
     <Modal
@@ -74,13 +74,13 @@ export function SalesReportModal() {
       </div>
 
       {isLoading && (
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex justify-center items-center mt-12 h-[320px]">
           <Spinner className="w-7 h-7" />
         </div>
       )}
 
       {!isLoading && !hasSalesReport && (
-        <div className="flex flex-col gap-4 items-center justify-center mt-14">
+        <div className="flex flex-col gap-4 items-center justify-center mt-12 h-[320px]">
           <img src={EmptyStateImage} alt="Empty State" className="w-[120px]" />
           <h1 className="text-center">
             Não há estatísticas para o periodo selecionado.
@@ -95,7 +95,7 @@ export function SalesReportModal() {
               Número de pedidos:
             </strong>
             <span className="text-xl text-gray-800 tracking-[-0.5px]">
-              {salesReport.orders}
+              {salesReport!.orders}
             </span>
           </div>
           <div className="flex flex-col items-center gap-3 w-full">
@@ -103,7 +103,7 @@ export function SalesReportModal() {
               Faturamento:
             </strong>
             <span className="text-xl text-gray-800 tracking-[-0.5px]">
-              {formatCurrency(salesReport.billing)}
+              {formatCurrency(salesReport!.billing)}
             </span>
           </div>
           <div className="flex flex-col items-center gap-3 w-full">
@@ -111,7 +111,7 @@ export function SalesReportModal() {
               Modelo(s) mais vendido(s):
             </strong>
             <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
-              {salesReport.best_selling_models.join(", ")}.
+              {salesReport!.best_selling_models.join(", ")}.
             </span>
           </div>
 
@@ -120,7 +120,7 @@ export function SalesReportModal() {
               Cor(es) mais vendida(s):
             </strong>
             <span className="text-xl text-gray-800 tracking-[-0.5px] text-center">
-              {salesReport.best_selling_colors.join(", ")}.
+              {salesReport!.best_selling_colors.join(", ")}.
             </span>
           </div>
         </div>

@@ -19,7 +19,7 @@ export function ViewOrdersUsersModal() {
       onClose={closeViewOrdersModal}
     >
       {isLoading && (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center h-[350px]">
           <Spinner className="w-7 h-7" />
         </div>
       )}

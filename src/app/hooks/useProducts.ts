@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Product } from "../entities/Product";
 import { ProductsFilters } from "../services/productsService/getAll";
 
-export function useProducts(filters: ProductsFilters) {
+export function useProducts(filters?: ProductsFilters) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const {
