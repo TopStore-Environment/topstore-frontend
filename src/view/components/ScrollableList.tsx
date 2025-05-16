@@ -26,7 +26,7 @@ export function ScrollableList({
         orientation="vertical"
         className="absolute right-0 top-0 bottom-0 w-2 flex touch-none select-none transition-colors bg-transparent hover:bg-gray-400"
       >
-        <ScrollAreaPrimitive.Thumb className="relative flex-1 bg-gray-700 rounded-full" />
+        <ScrollAreaPrimitive.Thumb className="relative flex-1 bg-gray-100 rounded-full" />
       </ScrollAreaPrimitive.Scrollbar>
     </ScrollAreaPrimitive.Root>
   );
