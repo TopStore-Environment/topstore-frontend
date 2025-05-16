@@ -1,16 +1,20 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { formatCurrency } from "../../../../../../app/utils/formatCurrency";
-import { Order } from "../../../../../../app/entities/Order";
-import { formatDate } from "../../../../../../app/utils/formatDate";
-import { cn } from "../../../../../../app/utils/cn";
+import { cn } from "../../../../../../../app/utils/cn";
+import { Order } from "../../../../../../../app/entities/Order";
+import { formatCurrency } from "../../../../../../../app/utils/formatCurrency";
+import { formatDate } from "../../../../../../../app/utils/formatDate";
+import { useOrderCardUserController } from "./useOrderCardUserController";
+import { Spinner } from "../../../../../../components/Spinner";
 
 interface OrderCardUserProps {
   order: Order;
 }
 
 export function OrderCardUser({ order }: OrderCardUserProps) {
+  const { handleDeleteOrder, isLoading } = useOrderCardUserController(order.id);
+
   return (
-    <div className="border-b-[2px] border-gray-300 py-4">
+    <div className="border-b-[2px] border-gray-300 py-4 w-[96%]">
       <div className="flex justify-end mt-3">
         <span
           className={cn(
@@ -27,7 +31,7 @@ export function OrderCardUser({ order }: OrderCardUserProps) {
         </span>
       </div>
 
-      <div className="flex justify-around items-center w-[96%] mt-2">
+      <div className="flex justify-around items-center mt-2">
         <LazyLoadImage
           src={`/products/${order.product.product_model.image_name}`}
           className="w-[60px] "
@@ -48,8 +52,12 @@ export function OrderCardUser({ order }: OrderCardUserProps) {
 
       {(order.status === "Em Análise" ||
         order.status === "Aguardando Pagamento") && (
-        <button className="mt-2.5 w-full border border-red-700 text-red-700 p-1 rounded-lg hover:bg-red-100/20 transition-colors">
-          Cancelar Pedido
+        <button
+          onClick={handleDeleteOrder}
+          className="mt-2.5 w-full border border-red-700 text-red-700 py-2 rounded-lg hover:bg-red-100/20 transition-colors flex justify-center"
+        >
+          {!isLoading && <span>Cancelar Pedido</span>}
+          {isLoading && <Spinner className="fill-red-500 text-gray-100/20" />}
         </button>
       )}
     </div>
