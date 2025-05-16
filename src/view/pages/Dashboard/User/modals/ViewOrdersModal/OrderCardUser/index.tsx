@@ -14,8 +14,8 @@ export function OrderCardUser({ order }: OrderCardUserProps) {
   const { handleDeleteOrder, isLoading } = useOrderCardUserController(order.id);
 
   return (
-    <div className="border-b-[2px] border-gray-300 py-4">
-      <div className="flex justify-end mt-3 w-[96%]">
+    <div className="flex flex-col justify-center items-center border-b-[2px] border-gray-300 py-4">
+      <div className="flex justify-end mt-3 mr-2 w-[96%]">
         <span
           className={cn(
             "text-sm px-3 border border-yellow-600 text-yellow-600 rounded-full",
@@ -54,7 +54,7 @@ export function OrderCardUser({ order }: OrderCardUserProps) {
         order.status === "Aguardando Pagamento") && (
         <button
           onClick={handleDeleteOrder}
-          className="w-[96%] mt-2.5 border border-red-700 text-red-700 py-2 rounded-lg hover:bg-red-100/20 transition-colors flex justify-center"
+          className="w-[92%] mt-2.5 border border-red-700 text-red-700 py-2 rounded-lg hover:bg-red-100/20 transition-colors flex justify-center"
         >
           {!isLoading && <span>Cancelar Pedido</span>}
           {isLoading && <Spinner className="fill-red-500 text-gray-100/20" />}
