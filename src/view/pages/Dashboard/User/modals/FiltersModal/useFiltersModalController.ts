@@ -27,7 +27,6 @@ export function useFiltersModalController({
 
   const handleClearFilters = () => {
     if (Object.keys(filters).length > 0) {
-      console.log("Há filtros armazenados que estão sendo limpos");
       setFilters({});
     }
     reset({ model_name: null, storage: null, color: null });
