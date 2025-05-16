@@ -2,6 +2,7 @@ export interface Order {
   id: string;
   created_at: string;
   address: string;
+  status: string;
   user: {
     name: string;
     email: string;
