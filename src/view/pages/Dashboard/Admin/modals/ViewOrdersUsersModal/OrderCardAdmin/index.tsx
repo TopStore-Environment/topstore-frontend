@@ -1,16 +1,30 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { formatCurrency } from "../../../../../../app/utils/formatCurrency";
-import { Order } from "../../../../../../app/entities/Order";
-import { formatDate } from "../../../../../../app/utils/formatDate";
+import { Order } from "../../../../../../../app/entities/Order";
+import { formatCurrency } from "../../../../../../../app/utils/formatCurrency";
+import { formatDate } from "../../../../../../../app/utils/formatDate";
+import { StatusMenu } from "./StatusMenu";
+import { useOrderCardAdminController } from "./useOrderCardAdminController";
 
 interface AdminOrderCardProps {
   order: Order;
 }
 
 export function OrderCardAdmin({ order }: AdminOrderCardProps) {
+  const { selectedStatus, handleChangeStatus, isLoading } =
+    useOrderCardAdminController({
+      currentStatus: order.status,
+      orderId: order.id,
+    });
+
   return (
-    <div className="flex flex-col gap-4 py-4 border-b-[2px] border-gray-300 ">
-      <div className="flex justify-between sm:justify-around items-center w-[96%]  ">
+    <div className="flex flex-col justify-center items-center gap-4 py-4 border-b-[2px] border-gray-300">
+      <StatusMenu
+        isLoading={isLoading}
+        selectedStatus={selectedStatus}
+        onChangeStatus={handleChangeStatus}
+      />
+
+      <div className="flex justify-between sm:justify-around items-center w-[96%]">
         <LazyLoadImage
           src={`/products/${order.product.product_model.image_name}`}
           className="w-[60px]"
