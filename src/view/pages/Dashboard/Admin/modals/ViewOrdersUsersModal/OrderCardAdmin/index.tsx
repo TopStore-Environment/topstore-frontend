@@ -19,6 +19,7 @@ export function OrderCardAdmin({ order }: AdminOrderCardProps) {
   return (
     <div className="flex flex-col justify-center items-center gap-4 py-4 border-b-[2px] border-gray-300">
       <StatusMenu
+        status={order.status}
         isLoading={isLoading}
         selectedStatus={selectedStatus}
         onChangeStatus={handleChangeStatus}

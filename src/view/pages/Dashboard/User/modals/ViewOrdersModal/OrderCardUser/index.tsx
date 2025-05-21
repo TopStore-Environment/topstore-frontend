@@ -24,7 +24,9 @@ export function OrderCardUser({ order }: OrderCardUserProps) {
             order.status === "Entrega em Andamento" &&
               "border-blue-600 text-blue-600",
             order.status === "Entrega Concluída" &&
-              "border-green-600 text-green-600"
+              "border-green-600 text-green-600",
+            order.status === "Prazo de Pagamento Expirado" &&
+              "border-red-600 text-red-600"
           )}
         >
           {order.status}

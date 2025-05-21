@@ -7,13 +7,25 @@ interface StatusMenuProps {
   selectedStatus: string;
   onChangeStatus(status: string): void;
   isLoading: boolean;
+  status: string;
 }
 
 export function StatusMenu({
   selectedStatus,
   onChangeStatus,
   isLoading,
+  status,
 }: StatusMenuProps) {
+  if (status === "Prazo de Pagamento Expirado") {
+    return (
+      <div className="flex justify-end mt-3 w-[91%]">
+        <span className="text-sm px-3 border border-red-600 text-red-600 rounded-full">
+          {status}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className="w-[91%] flex justify-end">
       <DropdownMenu.Root>
