@@ -2,6 +2,7 @@ import { httpClient } from "../httpClient";
 
 interface MeResponse {
   id: string;
+  name: string;
 }
 
 export async function me() {

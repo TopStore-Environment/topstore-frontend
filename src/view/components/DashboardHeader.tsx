@@ -3,7 +3,7 @@ import { cn } from "../../app/utils/cn";
 import { UserMenu } from "./UserMenu";
 
 export function DashboardHeader() {
-  const { userRole } = useAuth();
+  const { userRole, userName } = useAuth();
 
   return (
     <header
@@ -13,7 +13,12 @@ export function DashboardHeader() {
       )}
     >
       <h1 className="text-2xl font-bold md:text-3xl">TopStore</h1>
-      <UserMenu />
+      <div className="flex justify-center items-center gap-4">
+        <span className="text-gray-800 tracking-[-0.5px] hidden sm:flex">
+          Olá, {userName?.split(" ")[0]}
+        </span>
+        <UserMenu />
+      </div>
     </header>
   );
 }

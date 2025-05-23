@@ -11,6 +11,7 @@ interface AuthContextValue {
   signedIn: boolean;
   userRole: UserRole;
   userId: string | null;
+  userName: string | null;
   signin(accessToken: string, role: UserRole): void;
   signout(): void;
 }
@@ -35,6 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   const [userId, setUserId] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
 
   const {
     data: userData,
@@ -68,6 +70,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setSignedIn(false);
     setUserRole(null);
     setUserId(null);
+    setUserName(null);
   }, [remove]);
 
   useEffect(() => {
@@ -80,6 +83,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (isSuccess && userData) {
       setUserId(userData.id);
+      setUserName(userData.name);
     }
   }, [isSuccess, userData]);
 
@@ -89,6 +93,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signedIn: isSuccess && signedIn,
         userRole,
         userId,
+        userName,
         signin,
         signout,
       }}
