@@ -31,7 +31,7 @@ export function EditProductModal() {
       title="Editar Produto"
     >
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 -mt-6">
           <Controller
             control={control}
             name="model_name"
@@ -124,7 +124,7 @@ export function EditProductModal() {
             )}
           />
 
-          <Button type="submit" className="w-full mt-4" isLoading={isLoading}>
+          <Button type="submit" className="w-full mt-2" isLoading={isLoading}>
             Confirmar alterações
           </Button>
         </div>
