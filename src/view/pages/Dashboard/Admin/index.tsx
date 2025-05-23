@@ -64,7 +64,7 @@ export function AdminDashboard() {
               )}
 
               {hasProducts && !isLoading && (
-                <div className="w-full flex justify-center">
+                <div className="w-full pb-8 flex justify-center">
                   <div className="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5">
                     {filteredProducts.map((product) => (
                       <ProductCardAdmin key={product.id} data={product} />

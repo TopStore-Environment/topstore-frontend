@@ -29,7 +29,7 @@ export function UserDashboard() {
       <div className="h-full w-full p-4 md:px-8 md:pb-8 md:pt-6 flex flex-col items-center">
         <DashboardHeader />
 
-        <main className="w-full max-w-[630px] py-4 flex-1 flex flex-col gap-4 items-center max-h-full">
+        <main className="w-full h-full max-w-[630px] py-4 flex-1 flex flex-col gap-4 items-center max-h-full">
           <header className="mt-[70px] w-full flex flex-col gap-2 pb-4">
             <strong className="text-lg tracking-[-0.5px]">
               Encontre Produtos no Estoque
@@ -67,7 +67,7 @@ export function UserDashboard() {
           )}
 
           {hasProducts && !isLoading && (
-            <div className="w-full flex justify-center">
+            <div className="w-full pb-8 flex justify-center">
               <div className="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5">
                 {filteredProducts.map((product) => (
                   <ProductCardUser key={product.id} data={product} />
