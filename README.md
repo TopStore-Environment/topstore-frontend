@@ -1,54 +1,93 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📱 TopStore
 
-Currently, two official plugins are available:
+**TopStore** é uma aplicação web desenvolvida para a compra e venda de **iPhones usados**. O sistema foi idealizado tanto para o dono da loja quanto para os clientes, oferecendo funcionalidades que facilitam o cadastro de novos produtos e permitem aos usuários acessarem recursos típicos dos maiores e-commerces do mundo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O principal objetivo da TopStore é simplificar o processo de troca e compra de celulares usados, especialmente **iPhones** que ainda se encontram em boas condições, atuando em um mercado dinâmico e em constante movimento.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologias Utilizadas no Front-end
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+O front-end da aplicação foi desenvolvido utilizando as seguintes tecnologias, cada uma contribuindo de forma essencial para a qualidade e eficiência do sistema:
+
+- **React com TypeScript**: para construção de interfaces modernas e com maior segurança no desenvolvimento.
+- **React Hook Form**: para simplificar o gerenciamento e a validação de formulários.
+- **React Query**: para lidar com requisições assíncronas e gerenciamento de cache de dados.
+- **Tailwind CSS**: para estilização rápida, responsiva e com classes utilitárias.
+
+
+## 🖥️ Back-end do Projeto
+
+O back-end do projeto foi desenvolvido em **Python** e está devidamente **deployado em produção**, oferecendo a API necessária para o funcionamento da aplicação.
+
+**Obs.:** Não é necessário rodar o back-end localmente para executar o front-end.
+
+## ⚠️ Pré-requisitos
+
+Antes de iniciar a instalação e execução da aplicação, é necessário ter o **Node.js** instalado em sua máquina.
+
+O Node.js é uma dependência essencial para o funcionamento do sistema, pois permite a execução do ambiente de desenvolvimento e o gerenciamento das dependências via **Yarn**.
+
+## 🛠️ Como rodar a aplicação localmente
+
+### 1. Clonar o repositório
+
+> Abra o terminal no diretório que você deseja e execute o seguinte comando:
+
+```bash
+git clone https://github.com/TopStore-Environment/topstore-frontend.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Instalar o Yarn globalmente
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Caso ainda não tenha o Yarn instalado, execute este comando no terminal:
+
+```bash
+npm install -g yarn
 ```
+
+---
+
+### 3. Instalar as dependências
+
+Agora, na raiz do projeto, rode o comando a seguir para instalar todas as dependências da aplicação:
+
+```bash
+yarn
+```
+
+---
+
+### 4. Configurar variáveis de ambiente
+
+Antes de subirmos o sistema, crie um arquivo `.env` seguindo como exemplo o `.env.example`, na **raiz do projeto** e adicione esta linha:
+
+```env
+VITE_API_URL = https://topstore-backend.fly.dev
+```
+
+> Essa variável contém a URL base do back-end da aplicação, permitindo assim sua conexão direta com o front-end.
+
+---
+
+### 5. Iniciar a aplicação
+
+Por fim, execute:
+
+```bash
+yarn dev
+```
+
+A aplicação estará acessível em:
+
+```
+http://localhost:5173
+```
+
+---
+
+## ✅ Pronto!
+
+Agora você já pode explorar e utilizar todas as funcionalidades da **TopStore** localmente.
