@@ -18,7 +18,7 @@ O front-end da aplicação foi desenvolvido utilizando as seguintes tecnologias,
 
 ## 🖥️ Back-end do Projeto
 
-O back-end do projeto foi desenvolvido em **Python** e está devidamente **deployado em produção**, oferecendo a API necessária para o funcionamento da aplicação.
+O back-end do projeto foi desenvolvido em **Python** e está devidamente publicado em produção, oferecendo a API necessária para o funcionamento da aplicação.
 
 **Obs.:** Não é necessário rodar o back-end localmente para executar o front-end.
 
