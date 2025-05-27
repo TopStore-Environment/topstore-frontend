@@ -44,14 +44,14 @@ export function OrderCardAdmin({ order }: AdminOrderCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-col">
-        <span className="flex flex-col sm:flex-row gap-1 sm:gap-2">
+      <div className="flex flex-col gap-1">
+        <span className="flex flex-col sm:flex-row gap-0 sm:gap-2">
           <strong>Quem comprou?</strong> {order.user.name}
         </span>
-        <span className="flex flex-col sm:flex-row gap-1 sm:gap-2">
+        <span className="flex flex-col flex-wrap sm:flex-row gap-0 sm:gap-1">
           <strong>Email para contato: </strong> {order.user.email}
         </span>
-        <span className="flex flex-col gap-1">
+        <span className="flex flex-col">
           <strong>Entregar em :</strong> {order.address}
         </span>
       </div>
