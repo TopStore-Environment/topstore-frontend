@@ -43,7 +43,7 @@ const schema = z.object({
   }),
   box_exists: z.enum(["Sim", "Não"], {
     errorMap: () => ({
-      message: "Informe se a caixa original está disponível.",
+      message: "Informe se o aparelho possui caixa.",
     }),
   }),
 });
