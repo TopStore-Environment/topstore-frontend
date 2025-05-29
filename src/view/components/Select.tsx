@@ -89,7 +89,7 @@ export function Select({
       </div>
 
       {error && (
-        <div className="mt-2 flex gap-2 items-center text-red-900">
+        <div className="flex gap-1 items-center text-red-900">
           <CrossCircledIcon />
           <span className="text-xs">{error}</span>
         </div>
