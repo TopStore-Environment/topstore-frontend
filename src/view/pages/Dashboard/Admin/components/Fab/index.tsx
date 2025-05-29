@@ -27,7 +27,7 @@ export function Fab() {
           </DropdownMenu.Item>
           <DropdownMenu.Item className="gap-2" onSelect={openViewOrdersModal}>
             <FileTextIcon className="w-5 h-5" />
-            Visulizar Pedidos
+            Visualizar Pedidos
           </DropdownMenu.Item>
           <DropdownMenu.Item className="gap-2" onSelect={openSalesReportModal}>
             <BarChartIcon className="w-5 h-5" />
