@@ -24,7 +24,7 @@ O back-end do projeto foi desenvolvido em **Python** e está devidamente publica
 
 ## ⚠️ Pré-requisitos
 
-Antes de iniciar a instalação e execução da aplicação, é necessário ter o **Node.js** instalado em sua máquina.
+Antes de iniciar a instalação e execução da aplicação, é necessário ter o **Node.js na versão 22.14.0 ou superior** instalado em sua máquina .
 
 O Node.js é uma dependência essencial para o funcionamento do sistema, pois permite a execução do ambiente de desenvolvimento e o gerenciamento das dependências via **Yarn**.
 
